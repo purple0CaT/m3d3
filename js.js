@@ -32,11 +32,7 @@ for( let card of dataBase.photos){
     <div class="card mb-4 shadow-sm h-100">
     <img src="${card.src.large}" alt="" style="height: 10rem;  object-fit: cover;">
       <div class="card-body">
-        <p class="card-text">
-          This is a wider card with supporting text below as a natural
-          lead-in to additional content. This content is a little bit
-          longer.
-        </p>
+        <p class="card-text">${card.photographer}</p>
         <div
           class="d-flex justify-content-between align-items-center"
         >
