@@ -1,6 +1,5 @@
 let dataBase 
 
-
 window.onload = () => {
     fetch("https://api.pexels.com/v1/search?query=programming", {
         "method": "GET",
@@ -11,7 +10,7 @@ window.onload = () => {
     })
     .then( response => response.json())
     .then(data => dataBase = data)
-    .catch(err => console.error(err))
+    .catch(err => alert(err))
     
 }
 // checking
@@ -62,26 +61,22 @@ for( let card of dataBase.photos){
   </div>
 `
 }
+}
 
-
+// second Button
+function loadSecond(){
+    loadData()
+    setTimeout(loadImgs, 1000)
 }
 // load from database
 function loadData() {
-    fetch(`${dataBase.next_page}`) , {mode:'cors'}, {
-        method: "GET",
-        withCredentials: true,
-        headers: {
-        //   "X-Auth-Token": "563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6",
-        //   "Content-Type": "application/json"
-        "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
-
+    fetch(`${dataBase.next_page}`, {
+        "method": "GET",
+        "headers": {
+            "Authorization": "bearer 563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
         }
-      }
+    })
         .then(response => response.json())
-        .then(function(data) {
-          console.log(data);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+        .then(data => dataBase = data)
+        .catch(err => alert(err))
 }
