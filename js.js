@@ -49,9 +49,9 @@ for( let card of dataBase.photos){
             </button>
             <button
               type="button"
-              class="btn btn-sm btn-outline-secondary"
+              class="btn btn-sm btn-outline-secondary" onclick="hideCard(this)"
             >
-              Edit
+              Hide
             </button>
           </div>
           <small class="text-muted">id: ${card.id}</small>
@@ -79,4 +79,11 @@ function loadData() {
         .then(response => response.json())
         .then(data => dataBase = data)
         .catch(err => alert(err))
+}
+
+// Hide Card
+
+function hideCard (inf){
+const card = inf.parentElement.parentElement.parentElement.parentElement.parentElement
+card.remove()
 }
