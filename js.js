@@ -30,8 +30,8 @@ for( let card of dataBase.photos){
 
     rowCard.innerHTML += `
     <div class="col-md-4">
-    <div class="card mb-4 shadow-sm">
-    <img src="${card.src.large}" alt="">
+    <div class="card mb-4 shadow-sm h-100">
+    <img src="${card.src.large}" alt="" style="height: 10rem;  object-fit: cover;">
       <div class="card-body">
         <p class="card-text">
           This is a wider card with supporting text below as a natural
