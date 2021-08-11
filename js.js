@@ -49,8 +49,7 @@ for( let card of dataBase.photos){
             </button>
             <button
               type="button"
-              class="btn btn-sm btn-outline-secondary" onclick="hideCard(this)"
-            >
+              class="btn btn-sm btn-outline-secondary" onclick="hideCard(this)">
               Hide
             </button>
           </div>
@@ -86,4 +85,20 @@ function loadData() {
 function hideCard (inf){
 const card = inf.parentElement.parentElement.parentElement.parentElement.parentElement
 card.remove()
+}
+
+// SEARCH
+function searchIt(value) {
+    fetch(`https://api.pexels.com/v1/search?query=`+value.toLowerCase(), {
+        "method": "GET",
+        "headers": {
+            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
+        }
+    })
+        .then(response => response.json())
+        .then(data => dataBase = data)
+        .catch(err => alert(err))
+
+        rowCard.innerHTML =  ''
+        setTimeout(loadImgs, 500)
 }
