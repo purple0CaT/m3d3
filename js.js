@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 let dataBase 
 
 
@@ -6,13 +7,23 @@ window.onload = () => {
         "method": "GET",
         "headers": {
             "Authorization": "bearer 563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
+=======
+let dataBase
+window.onload = () => {
 
-        }
+    fetch("https://api.pexels.com/v1/search?query=programming", {
+        method: "GET",
+        headers: {
+            Authorization: "563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
+            WithCredentials: true;
+
+>>>>>>> Stashed changes
+
     })
-    .then( response => response.json())
+    .then( respon => respon.json())
     .then(data => dataBase = data)
     .catch(err => console.error(err))
-    
+
 }
 // checking
 setTimeout(check, 500)
@@ -63,6 +74,7 @@ for( let card of dataBase.photos){
 `
 }
 
+<<<<<<< Updated upstream
 
 }
 // load from database
@@ -85,3 +97,22 @@ function loadData() {
           console.log(error);
         });
 }
+=======
+// function loadImgs() {
+//     fetch("https://api.pexels.com/v1/search?query=programming") , {
+//         method: "GET",
+//         withCredentials: true,
+//         headers: {
+//           "X-Auth-Token": "563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6",
+//           "Content-Type": "application/json"
+//         }
+//       })
+//         .then(response => response.json())
+//         .then(function(data) {
+//           console.log(data);
+//         })
+//         .catch(function(error) {
+//           console.log(error);
+//         });
+// }
+>>>>>>> Stashed changes
