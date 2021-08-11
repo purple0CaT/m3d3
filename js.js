@@ -2,7 +2,7 @@ let dataBase
 const row = document.getElementById('pictureHolder')
 window.onload = () => {
     
-    fetch("https://api.pexels.com/v1/search?query=car", {
+    fetch("https://api.pexels.com/v1/search?query=programming", {
         "method": "GET",
         "headers": {
             "Authorization": "563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
@@ -17,6 +17,7 @@ window.onload = () => {
 }
 function loadPic(){
     loadingCont(dataBase.photos)
+    alert()
 }
 
 function loadingCont(){
