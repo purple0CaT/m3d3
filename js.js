@@ -1,11 +1,11 @@
 let dataBase 
+
+
 window.onload = () => {
-    
-    fetch("https://api.pexels.com/v1/search?query=car", {
+    fetch("https://api.pexels.com/v1/search?query=programming", {
         "method": "GET",
         "headers": {
-            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
-
+            "Authorization": "bearer 563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
 
         }
     })
@@ -14,22 +14,69 @@ window.onload = () => {
     .catch(err => console.error(err))
     
 }
-setTimeout(check, 1000)
-
-
+// checking
+setTimeout(check, 500)
 function check (){
-    console.log(dataBase.photos[0])
+    console.log(dataBase)
 }
 
-function loadImgs() {
-    fetch("https://api.pexels.com/v1/search?query=programming") , {mode:'cors'} {
+// Row container card
+const rowCard = document.getElementById('rowCard')
+
+
+function loadImgs(){
+
+for( let card of dataBase.photos){
+
+    rowCard.innerHTML += `
+    <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+    <img src="${card.src.large}" alt="">
+      <div class="card-body">
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural
+          lead-in to additional content. This content is a little bit
+          longer.
+        </p>
+        <div
+          class="d-flex justify-content-between align-items-center"
+        >
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+            >
+              View
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+            >
+              Edit
+            </button>
+          </div>
+          <small class="text-muted">id: ${card.id}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+`
+}
+
+
+}
+// load from database
+function loadData() {
+    fetch(`${dataBase.next_page}`) , {mode:'cors'}, {
         method: "GET",
         withCredentials: true,
         headers: {
-          "X-Auth-Token": "563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6",
-          "Content-Type": "application/json"
+        //   "X-Auth-Token": "563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6",
+        //   "Content-Type": "application/json"
+        "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
+
         }
-      })
+      }
         .then(response => response.json())
         .then(function(data) {
           console.log(data);
