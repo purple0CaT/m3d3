@@ -1,17 +1,23 @@
 let dataBase 
 
+
 window.onload = () => {
-    fetch("https://api.pexels.com/v1/search?query=programming", {
+    fatchFirst()
+}
+
+// run first fatch
+function fatchFirst(){
+    fetch("https://api.pexels.com/v1/search?query=forest", {
         "method": "GET",
         "headers": {
-            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
+            "Authorization": "bearer 563492ad6f917000010000010c07485ab4c945a295e08a494dec09ff"
 
         }
     })
     .then( response => response.json())
     .then(data => dataBase = data)
     .catch(err => alert(err))
-    
+
 }
 // checking
 setTimeout(check, 500)
@@ -28,7 +34,7 @@ function loadImgs(){
 for( let card of dataBase.photos){
 
     rowCard.innerHTML += `
-    <div class="col-md-4">
+    <div class="col-md-4 mb-4">
     <div class="card mb-4 shadow-sm h-100">
     <img src="${card.src.large}" alt="" style="height: 10rem;  object-fit: cover;">
       <div class="card-body">
@@ -56,19 +62,21 @@ for( let card of dataBase.photos){
   </div>
 `
 }
+alertM()
 }
 
 // second Button
 function loadSecond(){
     loadData()
-    setTimeout(loadImgs, 1000)
+    setTimeout(loadImgs, 500)
+    
 }
 // load from database
 function loadData() {
     fetch(`${dataBase.next_page}`, {
         "method": "GET",
         "headers": {
-            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
+            "Authorization": "bearer 563492ad6f917000010000010c07485ab4c945a295e08a494dec09ff"
         }
     })
         .then(response => response.json())
@@ -88,7 +96,7 @@ function searchIt(value) {
     fetch(`https://api.pexels.com/v1/search?query=`+value.toLowerCase(), {
         "method": "GET",
         "headers": {
-            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
+            "Authorization": "bearer 563492ad6f917000010000010c07485ab4c945a295e08a494dec09ff"
         }
     })
         .then(response => response.json())
@@ -97,4 +105,19 @@ function searchIt(value) {
 
         rowCard.innerHTML =  ''
         setTimeout(loadImgs, 500)
+}
+
+
+// Alert
+
+function alertM(m){
+    let body = document.querySelector('.jumbotron .container')
+    body.innerHTML += `
+    <div class="alert alert-secondary  w-50 text-center" role="alert" style="margin: auto !important; transition: 1s">
+        Uploaded ${dataBase.photos.length} images
+    </div>`
+    setTimeout(()=>{
+        let div = document.querySelector('.jumbotron .container .alert')
+        div.remove()
+    }, 2500)
 }

@@ -194,6 +194,13 @@
             This page will dynamically load pictures from the web, and display
             them in a cool way!
           </p>
+          <input
+          type="text"
+          class="form-control"
+          id="inputSearch"
+          onchange="searchIt(this.value)"
+          placeholder="...search"
+        />
 
           <p>
             <a href="#" class="btn btn-primary my-2" onclick="loadImgs()"
@@ -202,14 +209,6 @@
             <a href="#" class="btn btn-secondary my-2" onclick="loadSecond()"
               >Load Secondary Images</a
             >
-
-            <input
-              type="text"
-              class="form-control"
-              id="inputSearch"
-              onchange="searchIt(this.value)"
-              placeholder="...search"
-            />
           </p>
         </div>
       </section>
