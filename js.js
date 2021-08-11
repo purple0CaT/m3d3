@@ -5,7 +5,7 @@ window.onload = () => {
     fetch("https://api.pexels.com/v1/search?query=car", {
         "method": "GET",
         "headers": {
-            "Authorization": "563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
+            "Authorization": "563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
         }
     })
     .then( respon => respon.json())
