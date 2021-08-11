@@ -15,18 +15,12 @@ window.onload = () => {
     .catch(err => console.error(err))
     
 }
-setTimeout(check, 300)
-
-function check (){
-    console.log(dataBase)
-}
 function loadPic(){
     loadingCont(dataBase.photos)
-
 }
 
-function loadingCont(inf){
-    for ( let card of inf){
+function loadingCont(){
+    for ( let card of dataBase.photos){
     row.innerHTML += `<div class="col-md-4">
     <div class="card mb-4 shadow-sm h-100">
     <img src="${card.src.large}" alt="" style="height: 10rem;  object-fit: cover;">
@@ -54,7 +48,23 @@ function loadingCont(inf){
 }
 }
 
-
+// second Button
+function loadSecond(){
+    loadData()
+    setTimeout(loadingCont, 1000)
+}
+// load from database
+function loadData() {
+    fetch(`${dataBase.next_page}`, {
+        "method": "GET",
+        "headers": {
+            "Authorization": "bearer 563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
+        }
+    })
+        .then(response => response.json())
+        .then(data => dataBase = data)
+        .catch(err => alert(err))
+}
 // hide card\
 function hideCard(inf){
     let hiden = inf.parentElement.parentElement.parentElement.parentElement.parentElement
