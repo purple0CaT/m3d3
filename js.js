@@ -4,7 +4,7 @@ window.onload = () => {
     fetch("https://api.pexels.com/v1/search?query=programming", {
         "method": "GET",
         "headers": {
-            "Authorization": "bearer 563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
+            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
 
         }
     })
@@ -73,7 +73,7 @@ function loadData() {
     fetch(`${dataBase.next_page}`, {
         "method": "GET",
         "headers": {
-            "Authorization": "bearer 563492ad6f91700001000001c37b06144d9249f6907a4a1732edda7c"
+            "Authorization": "bearer 563492ad6f91700001000001a21d412f76244d6ab5f47ba8a941ecd6"
         }
     })
         .then(response => response.json())
