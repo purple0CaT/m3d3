@@ -29,7 +29,7 @@ function loadingCont(inf){
     for ( let card of inf){
     row.innerHTML += `<div class="col-md-4">
     <div class="card mb-4 shadow-sm h-100">
-    <img class="card-img-top" src=${card.src.large} alt="Card image cap">
+    <img src="${card.src.large}" alt="" style="height: 10rem;  object-fit: cover;">
       <div class="card-body">
         <p class="card-text">
           This is a wider card with supporting text below as a natural
